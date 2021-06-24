@@ -1,0 +1,22 @@
+{
+  "managedConnectors": "Connettori gestiti",
+  "overview": "Panoramica",
+  "id": "id",
+  "name": "Nome",
+  "type": "Genere",
+  "category": "Categoria",
+  "status": "Stato",
+  "Ready": "Ready",
+  "Failed": "Failed",
+  "Creation pending": "Creation pending",
+  "Creation in progress": "Creation in progress",
+  "Deletion in progress": "Deletion in progress",
+  "loading": "Caricamento in corso",
+  "selectOcmCluster": "Seleziona cluster OCM",
+  "createConnectors": "Crea connettore",
+  "deleteConnector": "Eliminare il connettore?",
+  "deleteConfirmMessage": "Il connettore <1>{{connectorName}}</1> verrà eliminato.",
+  "deleteTypeNameMessage": "Digitare <1>{{connectorName}}</1> per confermare l'eliminazione.",
+  "delete": "Elimina",
+  "cancel": "Annulla"
+}
