@@ -1,0 +1,20 @@
+import { FunctionComponent } from 'react';
+import './ConnectorsTable.css';
+export declare const ConnectorsTable: FunctionComponent;
+declare type ConnectorsTableRowProps = {
+    connectorId: string;
+    name: string;
+    type: string;
+    category: string;
+    status: string;
+    isSelected: boolean;
+    canStart: boolean;
+    canStop: boolean;
+    canDelete: boolean;
+    onStart: () => void;
+    onStop: () => void;
+    onDelete: () => void;
+    onSelect: () => void;
+};
+export declare const ConnectorsTableRow: FunctionComponent<ConnectorsTableRowProps>;
+export {};
