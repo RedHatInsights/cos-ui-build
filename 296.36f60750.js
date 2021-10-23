@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcos_ui=self.webpackChunkcos_ui||[]).push([[296],{38296:(s,e,n)=>{function o(...s){const e=[],n={}.hasOwnProperty;return s.filter(Boolean).forEach((s=>{const r=typeof s;if("string"===r||"number"===r)e.push(s);else if(Array.isArray(s)&&s.length){const n=o(...s);n&&e.push(n)}else if("object"===r)for(const o in s)n.call(s,o)&&s[o]&&e.push(o)})),e.join(" ")}n.r(e),n.d(e,{css:()=>o})}}]);
+//# sourceMappingURL=296.36f60750.js.map
