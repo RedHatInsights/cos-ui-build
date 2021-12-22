@@ -7,6 +7,7 @@ import { ClustersMachineActorRef } from './StepClusters.machine';
 import { ConnectorConfiguratorResponse } from './StepConfiguratorLoader.machine';
 import { ConnectorTypesMachineActorRef } from './StepConnectorTypes.machine';
 import { KafkaMachineActorRef } from './StepKafkas.machine';
+import { BasicMachineActorRef } from './StepBasic.machine';
 import { ReviewMachineActorRef } from './StepReview.machine';
 import { ConnectorTypesQuery, KafkasQuery, UserProvidedServiceAccount } from './api';
 export declare type EmittedFrom<T> = T extends ActorRef<any, infer TEmitted> ? TEmitted : never;
@@ -29,6 +30,8 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     activeConfigurationStep?: number | undefined;
     isConfigurationValid?: boolean | undefined;
     connectorConfiguration?: unknown;
+    name: string;
+    userServiceAccount: UserProvidedServiceAccount;
     onSave?: (() => void) | undefined;
 }, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     isValid: () => {};
@@ -48,6 +51,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     }) => {
         subStep: number | undefined;
     };
+    jumpToBasicConfiguration: () => {};
     jumpToReviewConfiguration: () => {};
 }>>, {
     value: any;
@@ -63,6 +67,8 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         activeConfigurationStep?: number | undefined;
         isConfigurationValid?: boolean | undefined;
         connectorConfiguration?: unknown;
+        name: string;
+        userServiceAccount: UserProvidedServiceAccount;
         onSave?: (() => void) | undefined;
     };
 }>;
@@ -70,6 +76,7 @@ export declare const useCreateConnectorWizard: () => {
     connectorTypeRef: ConnectorTypesMachineActorRef;
     kafkaRef: KafkaMachineActorRef;
     clusterRef: ClustersMachineActorRef;
+    basicRef: BasicMachineActorRef;
     reviewRef: ReviewMachineActorRef;
 };
 export declare const useClustersMachineIsReady: () => boolean;
@@ -117,16 +124,20 @@ export declare const useKafkasMachine: () => {
     error: boolean;
     firstRequest: boolean;
 };
-export declare const useReviewMachine: () => {
-    name: string;
+export declare const useBasicMachine: () => {
     serviceAccount: UserProvidedServiceAccount | undefined;
-    configString: string;
-    configStringError: string | undefined;
-    configStringWarnings: string[] | undefined;
-    isSaving: boolean;
-    savingError: string | undefined;
+    name: string;
     onSetName: (name: string) => void;
     onSetServiceAccount: (serviceAccount: UserProvidedServiceAccount | undefined) => void;
-    onUpdateConfiguration: (data?: string | undefined) => void;
+};
+export declare const useReviewMachine: () => {
+    kafka: KafkaRequest;
+    cluster: ConnectorCluster;
+    connectorType: ConnectorType;
+    name: string;
+    userServiceAccount: UserProvidedServiceAccount | undefined;
+    configString: string;
+    isSaving: boolean;
+    savingError: string | undefined;
 };
 export {};
