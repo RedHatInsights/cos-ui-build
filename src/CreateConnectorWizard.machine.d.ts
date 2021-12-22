@@ -2,6 +2,7 @@ import { InterpreterFrom } from 'xstate';
 import { ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 import { ConnectorConfiguratorType } from './StepConfiguratorLoader.machine';
+import { UserProvidedServiceAccount } from './api';
 declare type Context = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
@@ -14,6 +15,8 @@ declare type Context = {
     activeConfigurationStep?: number;
     isConfigurationValid?: boolean;
     connectorConfiguration?: unknown;
+    name: string;
+    userServiceAccount: UserProvidedServiceAccount;
     onSave?: () => void;
 };
 export declare const creationWizardMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
@@ -34,6 +37,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
     }) => {
         subStep: number | undefined;
     };
+    jumpToBasicConfiguration: () => {};
     jumpToReviewConfiguration: () => {};
 }>>, {
     value: any;
@@ -56,6 +60,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
     }) => {
         subStep: number | undefined;
     };
+    jumpToBasicConfiguration: () => {};
     jumpToReviewConfiguration: () => {};
 }>>>>;
 export declare type CreationWizardMachineInterpreterFromType = InterpreterFrom<typeof creationWizardMachine>;
