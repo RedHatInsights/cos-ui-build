@@ -1,4 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react';
+import './StepBodyLayout.css';
 declare type CreateConnectorWizardBodyLayoutProps = {
     title: string;
     component?: ReactNode;
