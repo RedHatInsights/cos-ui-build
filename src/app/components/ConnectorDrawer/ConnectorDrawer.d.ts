@@ -14,7 +14,7 @@ export declare type ConnectorDrawerPanelContentProps = {
     owner: string;
     cluster: string;
     createdAt: Date;
-    updatedAt: Date;
+    modifiedAt: Date;
     status: string;
     onClose: () => void;
 };

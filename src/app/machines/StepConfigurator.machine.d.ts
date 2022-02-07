@@ -1,10 +1,7 @@
 import { ActorRefFrom } from 'xstate';
 import { ConnectorType } from '@rhoas/connector-management-sdk';
-declare type ConnectorTypePatched = Omit<ConnectorType, 'json_schema'> & {
-    schema: ConnectorType['json_schema'];
-};
 declare type Context = {
-    connector: ConnectorTypePatched;
+    connector: ConnectorType;
     steps: string[];
     activeStep: number;
     isActiveStepValid: boolean;
