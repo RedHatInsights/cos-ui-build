@@ -16,7 +16,9 @@ declare type Context = {
     isConfigurationValid?: boolean;
     connectorConfiguration?: unknown;
     name: string;
+    topic: string;
     userServiceAccount: UserProvidedServiceAccount;
+    userErrorHandler: string;
     onSave?: () => void;
 };
 export declare const creationWizardMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
@@ -38,6 +40,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
         subStep: number | undefined;
     };
     jumpToBasicConfiguration: () => {};
+    jumpToErrorConfiguration: () => {};
     jumpToReviewConfiguration: () => {};
 }>>, {
     value: any;
@@ -61,6 +64,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
         subStep: number | undefined;
     };
     jumpToBasicConfiguration: () => {};
+    jumpToErrorConfiguration: () => {};
     jumpToReviewConfiguration: () => {};
 }>>>>;
 export declare type CreationWizardMachineInterpreterFromType = InterpreterFrom<typeof creationWizardMachine>;

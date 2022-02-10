@@ -42,7 +42,9 @@ export declare type SaveConnectorProps = {
     configuration: object;
     name: string;
     userServiceAccount?: UserProvidedServiceAccount;
+    topic?: string;
+    userErrorHandler?: string;
     kafkaManagementApiBasePath: string;
 } & CommonApiProps;
-export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafkaManagementApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
+export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafkaManagementApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
 export {};

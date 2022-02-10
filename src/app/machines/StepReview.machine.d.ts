@@ -12,6 +12,8 @@ declare type Context = {
     initialConfiguration: unknown;
     name: string;
     userServiceAccount?: UserProvidedServiceAccount;
+    topic: string;
+    userErrorHandler: string;
     configString: string;
     configStringError?: string;
     configStringWarnings?: string[];
