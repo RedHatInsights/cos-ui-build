@@ -1,8 +1,7 @@
+import { createValidator } from '@utils/createValidator';
 import { ValidateFunction } from 'ajv';
 import { FunctionComponent } from 'react';
-export declare function createValidator(schema: object): (model: object) => {
-    details: import("ajv").ErrorObject<string, Record<string, any>, unknown>[];
-} | null;
+import './JsonSchemaConfigurator.css';
 export declare type CreateValidatorType = ReturnType<typeof createValidator>;
 export declare type ValidatorResultType = ValidateFunction<unknown>['errors'];
 declare type JsonSchemaConfiguratorProps = {
