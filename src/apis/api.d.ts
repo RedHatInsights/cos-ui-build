@@ -9,9 +9,18 @@ declare type CommonApiProps = {
 declare type ConnectorApiProps = {
     connector: Connector;
 } & CommonApiProps;
+declare type ConnectorDetailProps = {
+    connectorId: string;
+} & CommonApiProps;
+declare type ConnectorTypeProps = {
+    connectorTypeId: string;
+} & CommonApiProps;
+export declare type FetchCallbacks<RawDataType> = (onSuccess: (payload: RawDataType) => void, onError: (errorMsg: string) => void) => () => void;
 export declare const startConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
 export declare const stopConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
 export declare const deleteConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
+export declare const getConnector: ({ accessToken, connectorsApiBasePath, connectorId, }: ConnectorDetailProps) => FetchCallbacks<Connector>;
+export declare const getConnectorTypeDetail: ({ accessToken, connectorsApiBasePath, connectorTypeId }: ConnectorTypeProps) => (callback: any) => () => void;
 export declare const fetchConnectors: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<Connector, {}>;
 export declare const fetchClusters: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<ConnectorCluster, {}>;
 export declare type ConnectorTypesQuery = {
