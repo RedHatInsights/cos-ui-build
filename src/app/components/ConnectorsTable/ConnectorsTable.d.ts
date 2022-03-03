@@ -14,6 +14,7 @@ declare type ConnectorsTableRowProps = {
     onStart: () => void;
     onStop: () => void;
     onDelete: () => void;
+    openDetail: (target: string) => void;
     onSelect: () => void;
 };
 export declare const ConnectorsTableRow: FunctionComponent<ConnectorsTableRowProps>;
