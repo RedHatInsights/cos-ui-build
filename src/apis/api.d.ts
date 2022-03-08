@@ -9,13 +9,20 @@ declare type CommonApiProps = {
 declare type ConnectorApiProps = {
     connector: Connector;
 } & CommonApiProps;
+declare type ConnectorEditProps = {
+    connectorUpdate: {
+        [key: string]: any;
+    };
+    connectorId: string;
+    updatedName?: string;
+} & CommonApiProps;
 declare type ConnectorDetailProps = {
     connectorId: string;
 } & CommonApiProps;
 declare type ConnectorTypeProps = {
     connectorTypeId: string;
 } & CommonApiProps;
-export declare type FetchCallbacks<RawDataType> = (onSuccess: (payload: RawDataType) => void, onError: (errorMsg: string) => void) => () => void;
+export declare type FetchCallbacks<RawDataType> = (onSuccess: (payload?: RawDataType) => void, onError: (errorMsg: string) => void) => () => void;
 export declare const startConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
 export declare const stopConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
 export declare const deleteConnector: ({ accessToken, connectorsApiBasePath, connector, }: ConnectorApiProps) => (callback: Sender<any>) => () => void;
@@ -56,4 +63,5 @@ export declare type SaveConnectorProps = {
     kafkaManagementApiBasePath: string;
 } & CommonApiProps;
 export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafkaManagementApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
+export declare const updateConnector: ({ accessToken, connectorsApiBasePath, connectorUpdate, connectorId, updatedName, }: ConnectorEditProps) => FetchCallbacks<undefined>;
 export {};
