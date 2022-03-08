@@ -8,6 +8,7 @@ declare type JsonSchemaConfiguratorProps = {
     schema: Record<string, any>;
     configuration: unknown;
     onChange: (configuration: unknown, isValid: boolean) => void;
+    editCase?: boolean;
 };
 export declare const JsonSchemaConfigurator: FunctionComponent<JsonSchemaConfiguratorProps>;
 export {};
