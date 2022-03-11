@@ -9,6 +9,7 @@ export declare type ConnectorDrawerProps = {
 export declare const ConnectorDrawer: FunctionComponent<ConnectorDrawerProps>;
 export declare type ConnectorDrawerPanelContentProps = {
     name: string;
+    id: string;
     bootstrapServer: string;
     kafkaId: string;
     owner: string;
