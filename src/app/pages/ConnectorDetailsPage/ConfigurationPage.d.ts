@@ -3,6 +3,7 @@ import { Connector, ConnectorType } from '@rhoas/connector-management-sdk';
 import './ConfigurationPage.css';
 import { ErrorHandler } from './ErrorHandlerStep';
 export declare type ConfigurationPageProps = {
+    onSave: () => void;
     editMode: boolean;
     updateEditMode: (editEnable: boolean) => void;
     connectorData: Connector;
