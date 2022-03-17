@@ -10,3 +10,8 @@ export declare type ConfigurationStepProps = {
     onUpdateConfiguration: (type: string, update: any) => void;
 };
 export declare const ConfigurationStep: FC<ConfigurationStepProps>;
+declare type DataShape = {
+    data: any;
+};
+export declare const DataShape: FC<DataShape>;
+export {};
