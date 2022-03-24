@@ -2,7 +2,8 @@ import { UserProvidedServiceAccount } from '@apis/api';
 import { ActorRefFrom } from 'xstate';
 declare type Context = {
     name: string;
-    userServiceAccount?: UserProvidedServiceAccount;
+    sACreated: boolean;
+    userServiceAccount: UserProvidedServiceAccount;
 };
 export declare const basicMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     setName: (payload: {
@@ -10,10 +11,15 @@ export declare const basicMachine: import("xstate").StateMachine<Context, any, i
     }) => {
         name: string;
     };
-    setServiceAccount: (payload: {
-        serviceAccount: UserProvidedServiceAccount | undefined;
+    setSaCreated: (payload: {
+        sACreated: boolean;
     }) => {
-        serviceAccount: UserProvidedServiceAccount | undefined;
+        sACreated: boolean;
+    };
+    setServiceAccount: (payload: {
+        serviceAccount: UserProvidedServiceAccount;
+    }) => {
+        serviceAccount: UserProvidedServiceAccount;
     };
     confirm: () => {};
 }>>, {
@@ -25,10 +31,15 @@ export declare const basicMachine: import("xstate").StateMachine<Context, any, i
     }) => {
         name: string;
     };
-    setServiceAccount: (payload: {
-        serviceAccount: UserProvidedServiceAccount | undefined;
+    setSaCreated: (payload: {
+        sACreated: boolean;
     }) => {
-        serviceAccount: UserProvidedServiceAccount | undefined;
+        sACreated: boolean;
+    };
+    setServiceAccount: (payload: {
+        serviceAccount: UserProvidedServiceAccount;
+    }) => {
+        serviceAccount: UserProvidedServiceAccount;
     };
     confirm: () => {};
 }>>>>;

@@ -16,6 +16,7 @@ declare type Context = {
     isConfigurationValid?: boolean;
     connectorConfiguration?: unknown;
     name: string;
+    sACreated: boolean;
     topic: string;
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
