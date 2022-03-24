@@ -5,13 +5,12 @@ import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type Context = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
-    kafkaManagementApiBasePath: string;
     kafka: KafkaRequest;
     cluster: ConnectorCluster;
     connectorType: ConnectorType;
     initialConfiguration: unknown;
     name: string;
-    userServiceAccount?: UserProvidedServiceAccount;
+    userServiceAccount: UserProvidedServiceAccount;
     topic: string;
     userErrorHandler: string;
     configString: string;

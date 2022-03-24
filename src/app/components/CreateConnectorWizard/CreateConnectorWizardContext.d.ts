@@ -1,7 +1,7 @@
 import { ConnectorTypesQuery, KafkasQuery, UserProvidedServiceAccount } from '@apis/api';
 import { PaginatedApiRequest } from '@app/machines/PaginatedResponse.machine';
-import { BasicMachineActorRef } from '@app/machines/StepBasic.machine';
 import { ClustersMachineActorRef } from '@app/machines/StepClusters.machine';
+import { BasicMachineActorRef } from '@app/machines/StepCommon.machine';
 import { ConnectorConfiguratorResponse } from '@app/machines/StepConfiguratorLoader.machine';
 import { ConnectorTypesMachineActorRef } from '@app/machines/StepConnectorTypes.machine';
 import { ErrorHandlingMachineActorRef } from '@app/machines/StepErrorHandling.machine';
@@ -32,6 +32,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     isConfigurationValid?: boolean | undefined;
     connectorConfiguration?: unknown;
     name: string;
+    sACreated: boolean;
     topic: string;
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
@@ -72,6 +73,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         isConfigurationValid?: boolean | undefined;
         connectorConfiguration?: unknown;
         name: string;
+        sACreated: boolean;
         topic: string;
         userServiceAccount: UserProvidedServiceAccount;
         userErrorHandler: string;
@@ -132,10 +134,12 @@ export declare const useKafkasMachine: () => {
     firstRequest: boolean;
 };
 export declare const useBasicMachine: () => {
-    serviceAccount: UserProvidedServiceAccount | undefined;
+    serviceAccount: UserProvidedServiceAccount;
     name: string;
+    sACreated: boolean;
+    onSetSaCreated: (sACreated: boolean) => void;
     onSetName: (name: string) => void;
-    onSetServiceAccount: (serviceAccount: UserProvidedServiceAccount | undefined) => void;
+    onSetServiceAccount: (serviceAccount: UserProvidedServiceAccount) => void;
 };
 export declare const useReviewMachine: () => {
     kafka: KafkaRequest;
@@ -144,7 +148,7 @@ export declare const useReviewMachine: () => {
     topic: string;
     userErrorHandler: string;
     name: string;
-    userServiceAccount: UserProvidedServiceAccount | undefined;
+    userServiceAccount: UserProvidedServiceAccount;
     configString: string;
     isSaving: boolean;
     savingError: string | undefined;

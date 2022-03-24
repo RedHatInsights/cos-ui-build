@@ -51,17 +51,25 @@ export declare type UserProvidedServiceAccount = {
     clientId: string;
     clientSecret: string;
 };
+export declare type createNewServiceAccountProps = {
+    accessToken: () => Promise<string>;
+    sortDesc: string;
+    kafkaManagementApiBasePath: string;
+};
+export declare const createNewServiceAccount: ({ accessToken, kafkaManagementApiBasePath, sortDesc, }: createNewServiceAccountProps) => Promise<{
+    clientId: string;
+    clientSecret: string;
+}>;
 export declare type SaveConnectorProps = {
     kafka: KafkaRequest;
     cluster: ConnectorCluster;
     connectorType: ConnectorType;
     configuration: object;
     name: string;
-    userServiceAccount?: UserProvidedServiceAccount;
+    userServiceAccount: UserProvidedServiceAccount;
     topic?: string;
     userErrorHandler?: string;
-    kafkaManagementApiBasePath: string;
 } & CommonApiProps;
-export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafkaManagementApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
+export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
 export declare const updateConnector: ({ accessToken, connectorsApiBasePath, connectorUpdate, connectorId, updatedName, }: ConnectorEditProps) => FetchCallbacks<undefined>;
 export {};
