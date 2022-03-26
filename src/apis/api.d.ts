@@ -1,6 +1,6 @@
 import { ApiCallback } from '@app/machines/PaginatedResponse.machine';
 import { Sender } from 'xstate';
-import { Connector, ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorCluster, ConnectorType, ServiceAccount } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type CommonApiProps = {
     accessToken: () => Promise<string>;
@@ -56,10 +56,7 @@ export declare type createNewServiceAccountProps = {
     sortDesc: string;
     kafkaManagementApiBasePath: string;
 };
-export declare const createNewServiceAccount: ({ accessToken, kafkaManagementApiBasePath, sortDesc, }: createNewServiceAccountProps) => Promise<{
-    clientId: string;
-    clientSecret: string;
-}>;
+export declare const createServiceAccount: ({ accessToken, kafkaManagementApiBasePath, sortDesc, }: createNewServiceAccountProps) => FetchCallbacks<ServiceAccount>;
 export declare type SaveConnectorProps = {
     kafka: KafkaRequest;
     cluster: ConnectorCluster;
