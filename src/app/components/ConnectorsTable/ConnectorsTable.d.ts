@@ -13,6 +13,7 @@ declare type ConnectorsTableRowProps = {
     canDelete: boolean;
     onStart: () => void;
     onStop: () => void;
+    onDuplicateConnector: (id: string) => void;
     onDelete: () => void;
     openDetail: (target: string) => void;
     onSelect: () => void;

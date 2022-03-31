@@ -9,6 +9,7 @@ declare type JsonSchemaConfiguratorProps = {
     configuration: unknown;
     onChange: (configuration: unknown, isValid: boolean) => void;
     editCase?: boolean;
+    duplicateMode?: boolean;
 };
 export declare const JsonSchemaConfigurator: FunctionComponent<JsonSchemaConfiguratorProps>;
 export {};

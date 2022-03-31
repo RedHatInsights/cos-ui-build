@@ -8,6 +8,8 @@ declare type Context = {
     response?: ApiSuccessResponse<ConnectorType>;
     selectedConnector?: ConnectorType;
     error?: Object;
+    connectorTypeDetails: ConnectorType;
+    duplicateMode?: boolean | undefined;
 };
 export declare const connectorTypesMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};

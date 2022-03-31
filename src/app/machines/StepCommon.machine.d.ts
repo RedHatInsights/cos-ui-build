@@ -3,7 +3,8 @@ import { ActorRefFrom } from 'xstate';
 declare type Context = {
     name: string;
     sACreated: boolean;
-    userServiceAccount: UserProvidedServiceAccount;
+    userServiceAccount?: UserProvidedServiceAccount;
+    duplicateMode?: boolean | undefined;
 };
 export declare const basicMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     setName: (payload: {

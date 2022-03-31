@@ -7,6 +7,7 @@ declare type Context = {
     response?: ApiSuccessResponse<ConnectorCluster>;
     selectedCluster?: ConnectorCluster;
     error?: Object;
+    duplicateMode?: boolean;
 };
 export declare const clustersMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};

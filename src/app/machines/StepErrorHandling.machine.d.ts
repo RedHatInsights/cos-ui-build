@@ -4,6 +4,7 @@ declare type Context = {
     connector: ConnectorType;
     topic: string;
     userErrorHandler?: any;
+    duplicateMode?: boolean;
 };
 export declare const errorHandlingMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     setTopic: (payload: {
