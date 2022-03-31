@@ -1,7 +1,7 @@
 import { UserProvidedServiceAccount } from '@apis/api';
 import { ConnectorConfiguratorType } from '@app/machines/StepConfiguratorLoader.machine';
 import { InterpreterFrom } from 'xstate';
-import { ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type Context = {
     accessToken: () => Promise<string>;
@@ -21,6 +21,10 @@ declare type Context = {
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
     onSave?: () => void;
+    connectorData?: Connector;
+    connectorTypeDetails?: ConnectorType;
+    connectorId?: string;
+    duplicateMode?: boolean;
 };
 export declare const creationWizardMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     isValid: () => {};

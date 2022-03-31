@@ -1,5 +1,6 @@
 import { KafkasQuery } from '@apis/api';
 import { ActorRefFrom } from 'xstate';
+import { Connector } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 import { PaginatedApiResponse } from './PaginatedResponse.machine';
 declare type Context = {
@@ -8,6 +9,8 @@ declare type Context = {
     response?: PaginatedApiResponse<KafkaRequest>;
     selectedInstance?: KafkaRequest;
     error?: Object;
+    connectorData?: Connector;
+    duplicateMode?: boolean | undefined;
 };
 export declare const kafkasMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};

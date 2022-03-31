@@ -17,6 +17,7 @@ declare type Context = {
     configStringError?: string;
     configStringWarnings?: string[];
     savingError?: string;
+    duplicateMode: boolean | undefined;
 };
 export declare const reviewMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     save: () => {};

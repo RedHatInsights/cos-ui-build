@@ -1,11 +1,12 @@
 import { ActorRefFrom } from 'xstate';
-import { ConnectorType } from '@rhoas/connector-management-sdk';
+import { ConnectorType, Connector } from '@rhoas/connector-management-sdk';
 declare type Context = {
     connector: ConnectorType;
     steps: string[];
     activeStep: number;
     isActiveStepValid: boolean;
     configuration: unknown;
+    connectorData?: Connector;
 };
 export declare const configuratorMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     entry: () => {};

@@ -9,13 +9,17 @@ import { KafkaMachineActorRef } from '@app/machines/StepKafkas.machine';
 import { ReviewMachineActorRef } from '@app/machines/StepReview.machine';
 import { FunctionComponent } from 'react';
 import { ActorRef } from 'xstate';
-import { ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 export declare type EmittedFrom<T> = T extends ActorRef<any, infer TEmitted> ? TEmitted : never;
 declare type CreateConnectorWizardProviderProps = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
     fetchConfigurator: (connector: ConnectorType) => Promise<ConnectorConfiguratorResponse>;
+    connectorData?: Connector;
+    connectorTypeDetails?: ConnectorType;
+    connectorId?: string;
+    duplicateMode?: boolean;
     onSave: () => void;
 };
 export declare const CreateConnectorWizardProvider: FunctionComponent<CreateConnectorWizardProviderProps>;
@@ -37,6 +41,10 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
     onSave?: (() => void) | undefined;
+    connectorData?: Connector | undefined;
+    connectorTypeDetails?: ConnectorType | undefined;
+    connectorId?: string | undefined;
+    duplicateMode?: boolean | undefined;
 }, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     isValid: () => {};
     isInvalid: () => {};
@@ -78,6 +86,10 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         userServiceAccount: UserProvidedServiceAccount;
         userErrorHandler: string;
         onSave?: (() => void) | undefined;
+        connectorData?: Connector | undefined;
+        connectorTypeDetails?: ConnectorType | undefined;
+        connectorId?: string | undefined;
+        duplicateMode?: boolean | undefined;
     };
 }>;
 export declare const useCreateConnectorWizard: () => {
@@ -91,7 +103,9 @@ export declare const useCreateConnectorWizard: () => {
 export declare const useClustersMachineIsReady: () => boolean;
 export declare const useClustersMachine: () => {
     selectedId: string | undefined;
+    duplicateMode: boolean | undefined;
     onSelect: (selectedCluster: string) => void;
+    onDeselectCluster: () => void;
     onQuery: (request: PaginatedApiRequest<{}>) => void;
     request: PaginatedApiRequest<{}>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorCluster> | undefined;
@@ -108,6 +122,8 @@ export declare const useConnectorTypesMachine: () => {
     selectedId: string | undefined;
     onSelect: (selectedConnector: string) => void;
     onQuery: (request: PaginatedApiRequest<ConnectorTypesQuery>) => void;
+    connectorTypeDetails: ConnectorType;
+    duplicateMode: boolean | undefined;
     request: PaginatedApiRequest<ConnectorTypesQuery>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorType> | undefined;
     loading: boolean;
@@ -121,7 +137,9 @@ export declare const useConnectorTypesMachine: () => {
 export declare const useKafkasMachineIsReady: () => boolean;
 export declare const useKafkasMachine: () => {
     selectedId: string | undefined;
+    duplicateMode: boolean | undefined;
     onSelect: (selectedInstance: string) => void;
+    onDeselect: () => void;
     onQuery: (request: PaginatedApiRequest<KafkasQuery>) => void;
     request: PaginatedApiRequest<KafkasQuery>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<KafkaRequest> | undefined;
@@ -134,12 +152,13 @@ export declare const useKafkasMachine: () => {
     firstRequest: boolean;
 };
 export declare const useBasicMachine: () => {
-    serviceAccount: UserProvidedServiceAccount;
+    serviceAccount: UserProvidedServiceAccount | undefined;
     name: string;
     sACreated: boolean;
     onSetSaCreated: (sACreated: boolean) => void;
     onSetName: (name: string) => void;
     onSetServiceAccount: (serviceAccount: UserProvidedServiceAccount) => void;
+    duplicateMode: boolean | undefined;
 };
 export declare const useReviewMachine: () => {
     kafka: KafkaRequest;
@@ -152,6 +171,7 @@ export declare const useReviewMachine: () => {
     configString: string;
     isSaving: boolean;
     savingError: string | undefined;
+    duplicateMode: boolean | undefined;
 };
 export declare const useErrorHandlingMachine: () => {
     errorHandler: any;
@@ -159,5 +179,6 @@ export declare const useErrorHandlingMachine: () => {
     onSetErrorHandler: (errorHandler: string) => void;
     onSetTopic: (topic: string) => void;
     connector: ConnectorType;
+    duplicateMode: boolean | undefined;
 };
 export {};

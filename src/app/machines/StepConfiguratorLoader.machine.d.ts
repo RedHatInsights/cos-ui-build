@@ -6,6 +6,7 @@ export declare type ConnectorConfiguratorProps = {
     isViewMode?: boolean;
     configuration?: unknown;
     onChange: (configuration: Map<string, unknown>, isValid: boolean) => void;
+    duplicateMode?: boolean | undefined;
 };
 export declare type ConnectorConfiguratorComponent = ComponentType<ConnectorConfiguratorProps>;
 export declare type ConnectorConfiguratorType = ConnectorConfiguratorComponent | false;
@@ -18,6 +19,7 @@ declare type Context = {
     Configurator?: ConnectorConfiguratorType;
     steps?: string[] | false;
     error?: string;
+    duplicateMode?: boolean | undefined;
 };
 export declare const configuratorLoaderMachine: import("xstate").StateMachine<Context, any, import("xstate").EventObject, {
     value: any;
