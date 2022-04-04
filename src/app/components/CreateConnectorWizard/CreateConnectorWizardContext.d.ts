@@ -1,15 +1,15 @@
 import { ConnectorTypesQuery, KafkasQuery, UserProvidedServiceAccount } from '@apis/api';
 import { PaginatedApiRequest } from '@app/machines/PaginatedResponse.machine';
-import { ClustersMachineActorRef } from '@app/machines/StepClusters.machine';
 import { BasicMachineActorRef } from '@app/machines/StepCommon.machine';
 import { ConnectorConfiguratorResponse } from '@app/machines/StepConfiguratorLoader.machine';
 import { ConnectorTypesMachineActorRef } from '@app/machines/StepConnectorTypes.machine';
 import { ErrorHandlingMachineActorRef } from '@app/machines/StepErrorHandling.machine';
 import { KafkaMachineActorRef } from '@app/machines/StepKafkas.machine';
+import { NamespaceMachineActorRef } from '@app/machines/StepNamespace.machine';
 import { ReviewMachineActorRef } from '@app/machines/StepReview.machine';
 import { FunctionComponent } from 'react';
 import { ActorRef } from 'xstate';
-import { Connector, ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorNamespace, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 export declare type EmittedFrom<T> = T extends ActorRef<any, infer TEmitted> ? TEmitted : never;
 declare type CreateConnectorWizardProviderProps = {
@@ -28,7 +28,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     connectorsApiBasePath: string;
     kafkaManagementApiBasePath: string;
     selectedKafkaInstance?: KafkaRequest | undefined;
-    selectedCluster?: ConnectorCluster | undefined;
+    selectedNamespace?: ConnectorNamespace | undefined;
     selectedConnector?: ConnectorType | undefined;
     Configurator?: import("@app/machines/StepConfiguratorLoader.machine").ConnectorConfiguratorType | undefined;
     configurationSteps?: false | string[] | undefined;
@@ -56,7 +56,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         step: number;
     };
     jumpToSelectKafka: () => {};
-    jumpToSelectCluster: () => {};
+    jumpToSelectNamespace: () => {};
     jumpToSelectConnector: () => {};
     jumpToConfigureConnector: ({ subStep }: {
         subStep?: number | undefined;
@@ -73,7 +73,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         connectorsApiBasePath: string;
         kafkaManagementApiBasePath: string;
         selectedKafkaInstance?: KafkaRequest | undefined;
-        selectedCluster?: ConnectorCluster | undefined;
+        selectedNamespace?: ConnectorNamespace | undefined;
         selectedConnector?: ConnectorType | undefined;
         Configurator?: import("@app/machines/StepConfiguratorLoader.machine").ConnectorConfiguratorType | undefined;
         configurationSteps?: false | string[] | undefined;
@@ -95,20 +95,18 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
 export declare const useCreateConnectorWizard: () => {
     connectorTypeRef: ConnectorTypesMachineActorRef;
     kafkaRef: KafkaMachineActorRef;
-    clusterRef: ClustersMachineActorRef;
+    namespaceRef: NamespaceMachineActorRef;
     basicRef: BasicMachineActorRef;
     errorRef: ErrorHandlingMachineActorRef;
     reviewRef: ReviewMachineActorRef;
 };
-export declare const useClustersMachineIsReady: () => boolean;
-export declare const useClustersMachine: () => {
+export declare const useNamespaceMachineIsReady: () => boolean;
+export declare const useNamespaceMachine: () => {
     selectedId: string | undefined;
-    duplicateMode: boolean | undefined;
-    onSelect: (selectedCluster: string) => void;
-    onDeselectCluster: () => void;
+    onSelect: (selectedNamespace: string) => void;
     onQuery: (request: PaginatedApiRequest<{}>) => void;
     request: PaginatedApiRequest<{}>;
-    response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorCluster> | undefined;
+    response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorNamespace> | undefined;
     loading: boolean;
     queryEmpty: boolean;
     queryResults: boolean;
@@ -162,7 +160,7 @@ export declare const useBasicMachine: () => {
 };
 export declare const useReviewMachine: () => {
     kafka: KafkaRequest;
-    cluster: ConnectorCluster;
+    namespace: ConnectorNamespace;
     connectorType: ConnectorType;
     topic: string;
     userErrorHandler: string;

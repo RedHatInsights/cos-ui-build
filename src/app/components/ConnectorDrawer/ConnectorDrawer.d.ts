@@ -13,7 +13,7 @@ export declare type ConnectorDrawerPanelContentProps = {
     bootstrapServer: string;
     kafkaId: string;
     owner: string;
-    cluster: string;
+    namespaceId: string;
     createdAt: Date;
     modifiedAt: Date;
     status: string;

@@ -1,12 +1,12 @@
 import { UserProvidedServiceAccount } from '@apis/api';
 import { ActorRefFrom } from 'xstate';
-import { ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { ConnectorNamespace, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type Context = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
     kafka: KafkaRequest;
-    cluster: ConnectorCluster;
+    namespace: ConnectorNamespace;
     connectorType: ConnectorType;
     initialConfiguration: unknown;
     name: string;

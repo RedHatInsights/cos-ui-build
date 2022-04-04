@@ -1,14 +1,14 @@
 import { UserProvidedServiceAccount } from '@apis/api';
 import { ConnectorConfiguratorType } from '@app/machines/StepConfiguratorLoader.machine';
 import { InterpreterFrom } from 'xstate';
-import { Connector, ConnectorCluster, ConnectorType } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorNamespace, ConnectorType } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type Context = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
     kafkaManagementApiBasePath: string;
     selectedKafkaInstance?: KafkaRequest;
-    selectedCluster?: ConnectorCluster;
+    selectedNamespace?: ConnectorNamespace;
     selectedConnector?: ConnectorType;
     Configurator?: ConnectorConfiguratorType;
     configurationSteps?: string[] | false;
@@ -37,7 +37,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
         step: number;
     };
     jumpToSelectKafka: () => {};
-    jumpToSelectCluster: () => {};
+    jumpToSelectNamespace: () => {};
     jumpToSelectConnector: () => {};
     jumpToConfigureConnector: ({ subStep }: {
         subStep?: number | undefined;
@@ -61,7 +61,7 @@ export declare const creationWizardMachine: import("xstate").StateMachine<Contex
         step: number;
     };
     jumpToSelectKafka: () => {};
-    jumpToSelectCluster: () => {};
+    jumpToSelectNamespace: () => {};
     jumpToSelectConnector: () => {};
     jumpToConfigureConnector: ({ subStep }: {
         subStep?: number | undefined;
