@@ -1,6 +1,6 @@
 import { ApiCallback } from '@app/machines/PaginatedResponse.machine';
 import { Sender } from 'xstate';
-import { Connector, ConnectorCluster, ConnectorType, ServiceAccount } from '@rhoas/connector-management-sdk';
+import { Connector, ConnectorNamespace, ConnectorType, ServiceAccount } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 declare type CommonApiProps = {
     accessToken: () => Promise<string>;
@@ -29,7 +29,7 @@ export declare const deleteConnector: ({ accessToken, connectorsApiBasePath, con
 export declare const getConnector: ({ accessToken, connectorsApiBasePath, connectorId, }: ConnectorDetailProps) => FetchCallbacks<Connector>;
 export declare const getConnectorTypeDetail: ({ accessToken, connectorsApiBasePath, connectorTypeId, }: ConnectorTypeProps) => (callback: any) => () => void;
 export declare const fetchConnectors: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<Connector, {}>;
-export declare const fetchClusters: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<ConnectorCluster, {}>;
+export declare const fetchConnectorNamespaces: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<ConnectorNamespace, {}>;
 export declare type ConnectorTypesQuery = {
     name?: string;
     categories?: string[];
@@ -59,7 +59,7 @@ export declare type createNewServiceAccountProps = {
 export declare const createServiceAccount: ({ accessToken, kafkaManagementApiBasePath, sortDesc, }: createNewServiceAccountProps) => FetchCallbacks<ServiceAccount>;
 export declare type SaveConnectorProps = {
     kafka: KafkaRequest;
-    cluster: ConnectorCluster;
+    namespace: ConnectorNamespace;
     connectorType: ConnectorType;
     configuration: object;
     name: string;
@@ -67,6 +67,6 @@ export declare type SaveConnectorProps = {
     topic?: string;
     userErrorHandler?: string;
 } & CommonApiProps;
-export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafka, cluster, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
+export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafka, namespace, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
 export declare const updateConnector: ({ accessToken, connectorsApiBasePath, connectorUpdate, connectorId, updatedName, }: ConnectorEditProps) => FetchCallbacks<undefined>;
 export {};
