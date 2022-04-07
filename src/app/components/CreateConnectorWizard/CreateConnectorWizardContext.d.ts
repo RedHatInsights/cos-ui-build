@@ -104,6 +104,7 @@ export declare const useNamespaceMachineIsReady: () => boolean;
 export declare const useNamespaceMachine: () => {
     selectedId: string | undefined;
     onSelect: (selectedNamespace: string) => void;
+    onRefresh: () => void;
     onQuery: (request: PaginatedApiRequest<{}>) => void;
     request: PaginatedApiRequest<{}>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorNamespace> | undefined;

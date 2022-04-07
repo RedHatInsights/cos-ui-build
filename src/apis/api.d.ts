@@ -9,6 +9,9 @@ declare type CommonApiProps = {
 declare type ConnectorApiProps = {
     connector: Connector;
 } & CommonApiProps;
+declare type EvalNamespaceApiProps = {
+    evalName: string;
+} & CommonApiProps;
 declare type ConnectorEditProps = {
     connectorUpdate: {
         [key: string]: any;
@@ -29,6 +32,7 @@ export declare const deleteConnector: ({ accessToken, connectorsApiBasePath, con
 export declare const getConnector: ({ accessToken, connectorsApiBasePath, connectorId, }: ConnectorDetailProps) => FetchCallbacks<Connector>;
 export declare const getConnectorTypeDetail: ({ accessToken, connectorsApiBasePath, connectorTypeId, }: ConnectorTypeProps) => (callback: any) => () => void;
 export declare const fetchConnectors: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<Connector, {}>;
+export declare const registerEvalNamespace: ({ accessToken, connectorsApiBasePath, evalName, }: EvalNamespaceApiProps) => FetchCallbacks<ConnectorNamespace>;
 export declare const fetchConnectorNamespaces: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<ConnectorNamespace, {}>;
 export declare type ConnectorTypesQuery = {
     name?: string;
