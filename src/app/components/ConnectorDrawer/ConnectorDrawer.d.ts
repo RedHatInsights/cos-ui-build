@@ -17,6 +17,7 @@ export declare type ConnectorDrawerPanelContentProps = {
     createdAt: Date;
     modifiedAt: Date;
     status: string;
+    error?: string;
     onClose: () => void;
 };
 export declare const ConnectorDrawerPanelContent: FunctionComponent<ConnectorDrawerPanelContentProps>;
