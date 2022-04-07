@@ -14,7 +14,8 @@ export declare enum ConnectorStatuses {
     Updating = "updating",
     Provisioning = "provisioning",
     Deleting = "deleting",
-    Deleted = "deleted"
+    Deleted = "deleted",
+    Disconnected = "disconnected"
 }
 export declare function useConnectorStatusLabel(status: string): string;
 export {};
