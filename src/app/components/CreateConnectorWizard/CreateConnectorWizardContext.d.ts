@@ -20,7 +20,7 @@ declare type CreateConnectorWizardProviderProps = {
     connectorTypeDetails?: ConnectorType;
     connectorId?: string;
     duplicateMode?: boolean;
-    onSave: () => void;
+    onSave: (name: string) => void;
 };
 export declare const CreateConnectorWizardProvider: FunctionComponent<CreateConnectorWizardProviderProps>;
 export declare const useCreateConnectorWizardService: () => import("xstate").Interpreter<{
@@ -40,7 +40,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
     topic: string;
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
-    onSave?: (() => void) | undefined;
+    onSave?: ((name: string) => void) | undefined;
     connectorData?: Connector | undefined;
     connectorTypeDetails?: ConnectorType | undefined;
     connectorId?: string | undefined;
@@ -85,7 +85,7 @@ export declare const useCreateConnectorWizardService: () => import("xstate").Int
         topic: string;
         userServiceAccount: UserProvidedServiceAccount;
         userErrorHandler: string;
-        onSave?: (() => void) | undefined;
+        onSave?: ((name: string) => void) | undefined;
         connectorData?: Connector | undefined;
         connectorTypeDetails?: ConnectorType | undefined;
         connectorId?: string | undefined;

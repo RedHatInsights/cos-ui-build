@@ -20,7 +20,7 @@ declare type Context = {
     topic: string;
     userServiceAccount: UserProvidedServiceAccount;
     userErrorHandler: string;
-    onSave?: () => void;
+    onSave?: (name: string) => void;
     connectorData?: Connector;
     connectorTypeDetails?: ConnectorType;
     connectorId?: string;
