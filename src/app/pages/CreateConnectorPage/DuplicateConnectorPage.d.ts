@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 declare type DuplicateConnectorPageProps = {
-    onSave: () => void;
+    onSave: (name: string) => void;
     onClose: () => void;
 };
 export declare const DuplicateConnectorPage: FunctionComponent<DuplicateConnectorPageProps>;
