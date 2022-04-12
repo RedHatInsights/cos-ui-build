@@ -32,7 +32,7 @@ export declare const deleteConnector: ({ accessToken, connectorsApiBasePath, con
 export declare const getConnector: ({ accessToken, connectorsApiBasePath, connectorId, }: ConnectorDetailProps) => FetchCallbacks<Connector>;
 export declare const getConnectorTypeDetail: ({ accessToken, connectorsApiBasePath, connectorTypeId, }: ConnectorTypeProps) => (callback: any) => () => void;
 export declare const fetchConnectors: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<Connector, {}>;
-export declare const registerEvalNamespace: ({ accessToken, connectorsApiBasePath, evalName, }: EvalNamespaceApiProps) => FetchCallbacks<ConnectorNamespace>;
+export declare const registerEvalNamespace: ({ accessToken, connectorsApiBasePath, evalName, }: EvalNamespaceApiProps) => FetchCallbacks<string>;
 export declare const fetchConnectorNamespaces: ({ accessToken, connectorsApiBasePath, }: CommonApiProps) => ApiCallback<ConnectorNamespace, {}>;
 export declare type ConnectorTypesQuery = {
     name?: string;
