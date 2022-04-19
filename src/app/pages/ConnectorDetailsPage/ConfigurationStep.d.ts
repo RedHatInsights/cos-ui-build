@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './ConfigurationStep.css';
 export declare type ConfigurationStepProps = {
     editMode: boolean;
     schema: Record<string, any>;
