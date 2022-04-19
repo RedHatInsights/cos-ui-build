@@ -7,9 +7,9 @@ export declare type ValidatorResultType = ValidateFunction<unknown>['errors'];
 declare type JsonSchemaConfiguratorProps = {
     schema: Record<string, any>;
     configuration: unknown;
-    onChange: (configuration: unknown, isValid: boolean) => void;
-    editCase?: boolean;
     duplicateMode?: boolean;
+    editMode?: boolean;
+    onChange: (configuration: unknown, isValid: boolean) => void;
 };
 export declare const JsonSchemaConfigurator: FunctionComponent<JsonSchemaConfiguratorProps>;
 export {};
