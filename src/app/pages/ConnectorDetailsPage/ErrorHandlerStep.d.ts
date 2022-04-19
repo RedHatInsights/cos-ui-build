@@ -5,7 +5,7 @@ export declare type ErrorHandler = {
 export declare type ErrorHandlerStepProps = {
     editMode: boolean;
     schema: Record<string, any>;
-    configuration: ErrorHandler;
+    configuration: ErrorHandler | undefined;
     changeIsValid: (isValid: boolean) => void;
     onUpdateConfiguration: (type: string, update: any) => void;
 };
