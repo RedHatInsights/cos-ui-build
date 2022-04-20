@@ -103,7 +103,9 @@ export declare const useCreateConnectorWizard: () => {
 export declare const useNamespaceMachineIsReady: () => boolean;
 export declare const useNamespaceMachine: () => {
     selectedId: string | undefined;
+    duplicateMode: boolean | undefined;
     onSelect: (selectedNamespace: string) => void;
+    onDeselect: () => void;
     onRefresh: () => void;
     onQuery: (request: PaginatedApiRequest<{}>) => void;
     request: PaginatedApiRequest<{}>;

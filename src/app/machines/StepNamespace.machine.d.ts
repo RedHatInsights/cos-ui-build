@@ -7,6 +7,7 @@ declare type Context = {
     response?: ApiSuccessResponse<ConnectorNamespace>;
     selectedNamespace?: ConnectorNamespace;
     error?: Object;
+    duplicateMode?: boolean | undefined;
 };
 export declare const namespacesMachine: import("xstate").StateMachine<Context, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};
