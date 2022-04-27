@@ -1,0 +1,30 @@
+import { ConnectorMachineActorRef } from '@app/machines/Connector.machine';
+import { FunctionComponent, ReactNode } from 'react';
+import { Connector } from '@rhoas/connector-management-sdk';
+import './ConnectorDrawer.css';
+export declare type ConnectorDrawerProps = {
+    currentConnectorRef: ConnectorMachineActorRef;
+    children: ReactNode;
+    connector?: Connector;
+    onClose: () => void;
+    onConnectorDetail: (id: string, goToConnectorDetails: string) => void;
+    onDuplicateConnector: (id: string) => void;
+};
+export declare const ConnectorDrawer: FunctionComponent<ConnectorDrawerProps>;
+export declare type ConnectorDrawerPanelContentProps = {
+    currentConnectorRef: ConnectorMachineActorRef;
+    name: string;
+    id: string;
+    bootstrapServer: string;
+    kafkaId: string;
+    owner: string;
+    namespaceId: string;
+    createdAt: Date;
+    modifiedAt: Date;
+    status: string;
+    error?: string;
+    onClose: () => void;
+    onConnectorDetail: (id: string, goToConnectorDetails: string) => void;
+    onDuplicateConnector: (id: string) => void;
+};
+export declare const ConnectorDrawerPanelContent: FunctionComponent<ConnectorDrawerPanelContentProps>;
