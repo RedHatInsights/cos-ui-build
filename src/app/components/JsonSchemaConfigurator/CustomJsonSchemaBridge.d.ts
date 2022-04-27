@@ -6,8 +6,9 @@ import JSONSchemaBridge from 'uniforms-bridge-json-schema';
  */
 export declare class CustomJsonSchemaBridge extends JSONSchemaBridge {
     showCredentialHelpText: boolean;
+    duplicateMode: boolean;
     t: TFunction<'translation', undefined>;
-    constructor(schema: any, validator: any, t: TFunction<'translation', undefined>, showCredentialHelpText: boolean);
+    constructor(schema: any, validator: any, t: TFunction<'translation', undefined>, showCredentialHelpText: boolean, duplicateMode: boolean);
     /**
      * Returns the element properties for the named field.  Properties
      * that should be excluded from DOM properties should be added to
