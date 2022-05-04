@@ -1,5 +1,24 @@
 export declare const mapToObject: (inputMap: Map<string, unknown>) => object;
 /**
+ * Calculate the time remaining before expiry
+ * @param expireTime
+ * @returns
+ */
+export declare const getPendingTime: (expireTime: Date) => {
+    hours: number;
+    min: number;
+};
+declare type AlertType = 'info' | 'warning' | 'danger' | undefined;
+/**
+ * Calculate the time remaining before expiry and return the alert type based on that
+ * @param expireTime
+ * @returns
+ * "info" if time remaining > 24 hr
+ * "warning" if time remaining >= 3 hr
+ * "danger" if time remaining < 3hr
+ */
+export declare const warningType: (expireTime: Date) => AlertType;
+/**
  * Simple reference resolver that works with references contained in the
  * same schema object
  * @param ref
@@ -35,3 +54,4 @@ export declare const patchConfigurationObject: (schema: Record<string, any>, con
     [key: string]: any;
     data_shape: any;
 }) => any;
+export {};
