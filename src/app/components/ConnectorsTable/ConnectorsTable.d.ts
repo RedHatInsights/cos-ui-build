@@ -3,10 +3,11 @@ import './ConnectorsTable.css';
 export declare const ConnectorsTable: FunctionComponent;
 declare type ConnectorsTableRowProps = {
     connectorId: string;
+    desiredState: string;
     name: string;
     type: string;
     category: string;
-    status: string;
+    state: string;
     isSelected: boolean;
     canStart: boolean;
     canStop: boolean;
