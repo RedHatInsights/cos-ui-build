@@ -1,9 +1,15 @@
 import { ComponentType } from 'react';
 import { ConnectorType } from '@rhoas/connector-management-sdk';
+export declare enum ConfigurationMode {
+    CREATE = "create",
+    VIEW = "view",
+    EDIT = "edit",
+    DUPLICATE = "duplicate"
+}
 export declare type ConnectorConfiguratorProps = {
     activeStep?: number;
     connector: ConnectorType;
-    isViewMode?: boolean;
+    uiPath: ConfigurationMode;
     configuration?: unknown;
     onChange: (configuration: Map<string, unknown>, isValid: boolean) => void;
     duplicateMode?: boolean | undefined;
