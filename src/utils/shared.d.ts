@@ -1,4 +1,6 @@
 export declare const mapToObject: (inputMap: Map<string, unknown>) => object;
+export declare const dataToPrettyString: (data: unknown) => string;
+export declare const getPasswordType: (schema: Record<string, any>) => string[];
 /**
  * Calculate the time remaining before expiry
  * @param expireTime
