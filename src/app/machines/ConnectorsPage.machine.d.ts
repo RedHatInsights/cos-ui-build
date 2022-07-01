@@ -1,3 +1,4 @@
+import { ConnectorsOrderBy, ConnectorsSearch } from '@apis/api';
 import { InterpreterFrom } from 'xstate';
 import { Connector } from '@rhoas/connector-management-sdk';
 declare type Context = {
@@ -16,11 +17,11 @@ export declare const connectorsPageMachine: import("xstate").StateMachine<Contex
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.setResponse': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<Connector>) => import("./PaginatedResponse.machine").ApiSuccessResponse<Connector>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.success': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<import("xstate").ActorRefWithDeprecatedState<{
         accessToken: () => Promise<string>;
         connectorsApiBasePath: string;
@@ -92,11 +93,11 @@ export declare const connectorsPageMachine: import("xstate").StateMachine<Contex
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.setResponse': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<Connector>) => import("./PaginatedResponse.machine").ApiSuccessResponse<Connector>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.success': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<import("xstate").ActorRefWithDeprecatedState<{
         accessToken: () => Promise<string>;
         connectorsApiBasePath: string;
