@@ -13,11 +13,11 @@ export declare const namespacesMachine: import("xstate").StateMachine<Context, a
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>;
     'api.setResponse': (payload: ApiSuccessResponse<ConnectorNamespace>) => ApiSuccessResponse<ConnectorNamespace>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>;
     'api.success': (payload: ApiSuccessResponse<ConnectorNamespace>) => ApiSuccessResponse<ConnectorNamespace>;
     'api.error': (payload: {
         error: string;
@@ -38,11 +38,11 @@ export declare const namespacesMachine: import("xstate").StateMachine<Context, a
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>;
     'api.setResponse': (payload: ApiSuccessResponse<ConnectorNamespace>) => ApiSuccessResponse<ConnectorNamespace>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<{}>) => import("./PaginatedResponse.machine").PaginatedApiRequest<{}>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, object>;
     'api.success': (payload: ApiSuccessResponse<ConnectorNamespace>) => ApiSuccessResponse<ConnectorNamespace>;
     'api.error': (payload: {
         error: string;

@@ -1,5 +1,5 @@
-import { ConnectorTypesQuery, KafkasQuery, UserProvidedServiceAccount } from '@apis/api';
-import { PaginatedApiRequest } from '@app/machines/PaginatedResponse.machine';
+import { ConnectorTypesOrderBy, ConnectorTypesSearch, KafkasSearch, UserProvidedServiceAccount } from '@apis/api';
+import { PaginatedApiRequest, PlaceholderOrderBy, PlaceholderSearch } from '@app/machines/PaginatedResponse.machine';
 import { BasicMachineActorRef } from '@app/machines/StepCommon.machine';
 import { ConnectorConfiguratorResponse } from '@app/machines/StepConfiguratorLoader.machine';
 import { ConnectorTypesMachineActorRef } from '@app/machines/StepConnectorTypes.machine';
@@ -107,8 +107,8 @@ export declare const useNamespaceMachine: () => {
     onSelect: (selectedNamespace: string) => void;
     onDeselect: () => void;
     onRefresh: () => void;
-    onQuery: (request: PaginatedApiRequest<{}>) => void;
-    request: PaginatedApiRequest<{}>;
+    runQuery: (request: PaginatedApiRequest<PlaceholderOrderBy, PlaceholderSearch>) => void;
+    request: PaginatedApiRequest<object, object>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorNamespace> | undefined;
     loading: boolean;
     queryEmpty: boolean;
@@ -122,10 +122,10 @@ export declare const useConnectorTypesMachineIsReady: () => boolean;
 export declare const useConnectorTypesMachine: () => {
     selectedId: string | undefined;
     onSelect: (selectedConnector: string) => void;
-    onQuery: (request: PaginatedApiRequest<ConnectorTypesQuery>) => void;
+    runQuery: (request: PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>) => void;
     connectorTypeDetails: ConnectorType;
     duplicateMode: boolean | undefined;
-    request: PaginatedApiRequest<ConnectorTypesQuery>;
+    request: PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<ConnectorType> | undefined;
     loading: boolean;
     queryEmpty: boolean;
@@ -141,8 +141,8 @@ export declare const useKafkasMachine: () => {
     duplicateMode: boolean | undefined;
     onSelect: (selectedInstance: string) => void;
     onDeselect: () => void;
-    onQuery: (request: PaginatedApiRequest<KafkasQuery>) => void;
-    request: PaginatedApiRequest<KafkasQuery>;
+    runQuery: (request: PaginatedApiRequest<PlaceholderOrderBy, KafkasSearch>) => void;
+    request: PaginatedApiRequest<object, KafkasSearch>;
     response?: import("@app/machines/PaginatedResponse.machine").PaginatedApiResponse<KafkaRequest> | undefined;
     loading: boolean;
     queryEmpty: boolean;

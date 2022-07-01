@@ -1,7 +1,8 @@
-import { ConnectorTypesQuery } from '@apis/api';
+import { ConnectorTypesOrderBy, ConnectorTypesSearch } from '@apis/api';
 import { ActorRefFrom } from 'xstate';
 import { ConnectorType } from '@rhoas/connector-management-sdk';
 import { ApiSuccessResponse } from './PaginatedResponse.machine';
+export declare const DEFAULT_CONNECTOR_TYPES_PAGE_SIZE = 20;
 declare type Context = {
     accessToken: () => Promise<string>;
     connectorsApiBasePath: string;
@@ -15,11 +16,11 @@ export declare const connectorTypesMachine: import("xstate").StateMachine<Contex
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>;
     'api.setResponse': (payload: ApiSuccessResponse<ConnectorType>) => ApiSuccessResponse<ConnectorType>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>;
     'api.success': (payload: ApiSuccessResponse<ConnectorType>) => ApiSuccessResponse<ConnectorType>;
     'api.error': (payload: {
         error: string;
@@ -40,11 +41,11 @@ export declare const connectorTypesMachine: import("xstate").StateMachine<Contex
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>;
     'api.setResponse': (payload: ApiSuccessResponse<ConnectorType>) => ApiSuccessResponse<ConnectorType>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesQuery>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<ConnectorTypesOrderBy, ConnectorTypesSearch>;
     'api.success': (payload: ApiSuccessResponse<ConnectorType>) => ApiSuccessResponse<ConnectorType>;
     'api.error': (payload: {
         error: string;
