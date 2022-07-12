@@ -23,7 +23,8 @@ declare type ConnectorEditProps = {
         [key: string]: any;
     };
     connectorId: string;
-    updatedName?: string;
+    updatedName?: string | undefined;
+    updatedServiceAccount?: ServiceAccount | undefined;
 } & CommonApiProps;
 declare type ConnectorDetailProps = {
     connectorId: string;
@@ -102,5 +103,5 @@ export declare type SaveConnectorProps = {
     userErrorHandler?: string;
 } & CommonApiProps;
 export declare const saveConnector: ({ accessToken, connectorsApiBasePath, kafka, namespace, connectorType, configuration, name, userServiceAccount, userErrorHandler, topic, }: SaveConnectorProps) => (callback: Sender<any>) => () => void;
-export declare const updateConnector: ({ accessToken, connectorsApiBasePath, connectorUpdate, connectorId, updatedName, }: ConnectorEditProps) => FetchCallbacks<undefined>;
+export declare const updateConnector: ({ accessToken, connectorsApiBasePath, connectorUpdate, connectorId, updatedName, updatedServiceAccount, }: ConnectorEditProps) => FetchCallbacks<undefined>;
 export {};
