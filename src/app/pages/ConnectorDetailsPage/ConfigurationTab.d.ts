@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Connector, ConnectorType } from '@rhoas/connector-management-sdk';
-import './ConfigurationPage.css';
-import { ErrorHandler } from './ErrorHandlerStep';
-export declare type ConfigurationPageProps = {
+import './ConfigurationTab.css';
+import { ErrorHandler } from './ConfigurationTab/ErrorHandlerStep';
+export declare type ConfigurationTabProps = {
     onSave: () => void;
     editMode: boolean;
     updateEditMode: (editEnable: boolean) => void;
@@ -14,4 +14,4 @@ export declare type connector = {
     error_handler: ErrorHandler;
     processors: object;
 };
-export declare const ConfigurationPage: FC<ConfigurationPageProps>;
+export declare const ConfigurationTab: FC<ConfigurationTabProps>;
