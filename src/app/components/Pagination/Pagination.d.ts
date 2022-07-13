@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import './Pagination.css';
 export declare type PaginationEvent<OrderBy, Search> = {
     page: number;
     size: number;
