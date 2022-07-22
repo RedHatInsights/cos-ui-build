@@ -1,4 +1,4 @@
-import { KafkasQuery } from '@apis/api';
+import { KafkasSearch } from '@apis/api';
 import { ActorRefFrom } from 'xstate';
 import { Connector } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
@@ -16,11 +16,11 @@ export declare const kafkasMachine: import("xstate").StateMachine<Context, any, 
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>;
     'api.setResponse': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>) => import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>;
     'api.success': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>) => import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>;
     'api.error': (payload: {
         error: string;
@@ -41,11 +41,11 @@ export declare const kafkasMachine: import("xstate").StateMachine<Context, any, 
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>;
+    'api.query': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>;
     'api.setResponse': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>) => import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>;
     'api.setError': (payload: import("./PaginatedResponse.machine").ApiErrorResponse) => import("./PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>) => import("./PaginatedResponse.machine").PaginatedApiRequest<KafkasQuery>;
+    'api.loading': (payload: import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>) => import("./PaginatedResponse.machine").PaginatedApiRequest<object, KafkasSearch>;
     'api.success': (payload: import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>) => import("./PaginatedResponse.machine").ApiSuccessResponse<KafkaRequest>;
     'api.error': (payload: {
         error: string;

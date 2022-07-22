@@ -1,3 +1,4 @@
+import { ConnectorsOrderBy, ConnectorsSearch } from '@apis/api';
 import { ConnectorMachineActorRef } from '@app/machines/Connector.machine';
 import { usePaginationReturnValue, PaginatedApiRequest } from '@app/machines/PaginatedResponse.machine';
 import { FunctionComponent } from 'react';
@@ -23,11 +24,11 @@ export declare const useConnectorsPageMachineService: () => import("xstate").Int
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: PaginatedApiRequest<{}>) => PaginatedApiRequest<{}>;
+    'api.query': (payload: PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.setResponse': (payload: import("@app/machines/PaginatedResponse.machine").ApiSuccessResponse<Connector>) => import("@app/machines/PaginatedResponse.machine").ApiSuccessResponse<Connector>;
     'api.setError': (payload: import("@app/machines/PaginatedResponse.machine").ApiErrorResponse) => import("@app/machines/PaginatedResponse.machine").ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: PaginatedApiRequest<{}>) => PaginatedApiRequest<{}>;
+    'api.loading': (payload: PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>;
     'api.success': (payload: import("@app/machines/PaginatedResponse.machine").ApiSuccessResponse<import("xstate").ActorRefWithDeprecatedState<{
         accessToken: () => Promise<string>;
         connectorsApiBasePath: string;
@@ -96,10 +97,10 @@ export declare const useConnectorsPageMachineService: () => import("xstate").Int
     };
 }>;
 export declare const useConnectorsPageIsReady: () => boolean;
-declare type useConnectorsMachineReturnType = usePaginationReturnValue<{}, ConnectorMachineActorRef> & {
+declare type useConnectorsMachineReturnType = usePaginationReturnValue<ConnectorsOrderBy, ConnectorsSearch, ConnectorMachineActorRef> & {
     selectedConnector: Connector | undefined;
     deselectConnector: () => void;
-    query: (props: PaginatedApiRequest<{}>) => void;
+    runQuery: (props: PaginatedApiRequest<ConnectorsOrderBy, ConnectorsSearch>) => void;
 };
 export declare const useConnectorsMachine: () => useConnectorsMachineReturnType;
 export {};

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Connector } from '@rhoas/connector-management-sdk';
-export interface OverviewPageProps {
+export interface OverviewTabProps {
     connectorData: Connector;
 }
-export declare const OverviewPage: FC<OverviewPageProps>;
+export declare const OverviewTab: FC<OverviewTabProps>;
