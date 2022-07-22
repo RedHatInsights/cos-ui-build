@@ -1,9 +1,18 @@
 import { FunctionComponent } from 'react';
-export declare type PaginationProps = {
+import './Pagination.css';
+export declare type PaginationEvent<OrderBy, Search> = {
+    page: number;
+    size: number;
+    orderBy?: OrderBy;
+    search?: Search;
+};
+export declare type PaginationProps<OrderBy, Search> = {
     itemCount: number;
     page: number;
     perPage: number;
     isCompact?: boolean;
-    onChange: (page: number, perPage: number) => void;
+    onChange: (event: PaginationEvent<OrderBy, Search>) => void;
+    orderBy?: OrderBy;
+    search?: Search;
 };
-export declare const Pagination: FunctionComponent<PaginationProps>;
+export declare const Pagination: FunctionComponent<PaginationProps<object, object>>;

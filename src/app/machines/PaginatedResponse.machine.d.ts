@@ -1,4 +1,5 @@
 import { ActorRef, ActorRefFrom } from 'xstate';
+export declare const DEFAULT_PAGE_SIZE = 10;
 export declare type ApiErrorResponse = {
     page: number;
     error: string;
@@ -9,34 +10,42 @@ export declare type ApiSuccessResponse<RawDataType> = {
     size: number;
     total: number;
 };
-export declare type ApiCallback<RawDataType, QueryType> = (request: PaginatedApiRequest<QueryType>, onSuccess: (payload: ApiSuccessResponse<RawDataType>) => void, onError: (payload: ApiErrorResponse) => void) => () => void;
-export declare type PaginatedApiRequest<QueryType> = {
+export declare type ApiCallback<RawDataType, OrderBy, Search> = (request: PaginatedApiRequest<OrderBy, Search>, onSuccess: (payload: ApiSuccessResponse<RawDataType>) => void, onError: (payload: ApiErrorResponse) => void) => () => void;
+export declare type PlaceholderOrderBy = object;
+export declare type PlaceholderSearch = object;
+export declare type PaginatedApiRequest<OrderBy, Search> = {
     page: number;
     size: number;
-    query?: QueryType;
+    orderBy?: OrderBy;
+    search?: Search;
 };
 export declare type PaginatedApiResponse<DataType> = {
     total: number;
     items?: Array<DataType>;
     error?: string;
 };
-export declare type PaginatedMachineContext<RawDataType, QueryType, DataType> = {
-    request: PaginatedApiRequest<QueryType>;
+export declare type PaginatedMachineContext<RawDataType, OrderBy, Search, DataType> = {
+    request: PaginatedApiRequest<OrderBy, Search>;
     response?: PaginatedApiResponse<DataType>;
     pollingEnabled: boolean;
     actor?: ActorRef<any>;
     dataTransformer: (response: RawDataType) => DataType;
     onBeforeSetResponse?: (previousData: DataType[] | undefined) => void;
 };
-export declare const getPaginatedApiMachineEvents: <RawDataType, QueryType, DataType>() => {
+export declare type PaginatedMachineOptions<DataType> = {
+    initialPageSize?: number;
+    pollingEnabled?: boolean;
+    onBeforeSetResponse?: (previousResponse: DataType[] | undefined) => void;
+};
+export declare const getPaginatedApiMachineEvents: <RawDataType, OrderBy, Search, DataType>() => {
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.query': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.setResponse': (payload: ApiSuccessResponse<RawDataType>) => ApiSuccessResponse<RawDataType>;
     'api.setError': (payload: ApiErrorResponse) => ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.loading': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.success': (payload: ApiSuccessResponse<DataType>) => ApiSuccessResponse<DataType>;
     'api.error': (payload: {
         error: string;
@@ -44,18 +53,15 @@ export declare const getPaginatedApiMachineEvents: <RawDataType, QueryType, Data
         error: string;
     };
 };
-export declare function makePaginatedApiMachine<RawDataType, QueryType, DataType>(service: ApiCallback<RawDataType, QueryType>, dataTransformer: (response: RawDataType) => DataType, options?: {
-    pollingEnabled?: boolean;
-    onBeforeSetResponse?: (previousResponse: DataType[] | undefined) => void;
-}): import("xstate").StateMachine<PaginatedMachineContext<RawDataType, QueryType, DataType>, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
+export declare function makePaginatedApiMachine<RawDataType, OrderBy, Search, DataType>(service: ApiCallback<RawDataType, OrderBy, Search>, dataTransformer: (response: RawDataType) => DataType, options?: PaginatedMachineOptions<DataType>): import("xstate").StateMachine<PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.query': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.setResponse': (payload: ApiSuccessResponse<RawDataType>) => ApiSuccessResponse<RawDataType>;
     'api.setError': (payload: ApiErrorResponse) => ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.loading': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.success': (payload: ApiSuccessResponse<DataType>) => ApiSuccessResponse<DataType>;
     'api.error': (payload: {
         error: string;
@@ -64,16 +70,16 @@ export declare function makePaginatedApiMachine<RawDataType, QueryType, DataType
     };
 }>>, {
     value: any;
-    context: PaginatedMachineContext<RawDataType, QueryType, DataType>;
-}, import("xstate").ActionObject<PaginatedMachineContext<RawDataType, QueryType, DataType>, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
+    context: PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>;
+}, import("xstate").ActionObject<PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
     'api.refresh': () => {};
     'api.nextPage': () => {};
     'api.prevPage': () => {};
-    'api.query': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.query': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.setResponse': (payload: ApiSuccessResponse<RawDataType>) => ApiSuccessResponse<RawDataType>;
     'api.setError': (payload: ApiErrorResponse) => ApiErrorResponse;
     'api.ready': () => {};
-    'api.loading': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+    'api.loading': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
     'api.success': (payload: ApiSuccessResponse<DataType>) => ApiSuccessResponse<DataType>;
     'api.error': (payload: {
         error: string;
@@ -81,16 +87,16 @@ export declare function makePaginatedApiMachine<RawDataType, QueryType, DataType
         error: string;
     };
 }>>>>;
-declare class Wrapper<RawDataType, QueryType, DataType> {
-    wrapped(service: ApiCallback<RawDataType, QueryType>, dataTransformer: (response: RawDataType) => DataType): import("xstate").StateMachine<PaginatedMachineContext<RawDataType, QueryType, DataType>, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
+declare class Wrapper<RawDataType, OrderBy, Search, DataType> {
+    wrapped(service: ApiCallback<RawDataType, OrderBy, Search>, dataTransformer: (response: RawDataType) => DataType): import("xstate").StateMachine<PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>, any, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
         'api.refresh': () => {};
         'api.nextPage': () => {};
         'api.prevPage': () => {};
-        'api.query': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+        'api.query': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
         'api.setResponse': (payload: ApiSuccessResponse<RawDataType>) => ApiSuccessResponse<RawDataType>;
         'api.setError': (payload: ApiErrorResponse) => ApiErrorResponse;
         'api.ready': () => {};
-        'api.loading': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+        'api.loading': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
         'api.success': (payload: ApiSuccessResponse<DataType>) => ApiSuccessResponse<DataType>;
         'api.error': (payload: {
             error: string;
@@ -99,16 +105,16 @@ declare class Wrapper<RawDataType, QueryType, DataType> {
         };
     }>>, {
         value: any;
-        context: PaginatedMachineContext<RawDataType, QueryType, DataType>;
-    }, import("xstate").ActionObject<PaginatedMachineContext<RawDataType, QueryType, DataType>, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
+        context: PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>;
+    }, import("xstate").ActionObject<PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>, import("xstate/lib/model.types").UnionFromCreatorsReturnTypes<import("xstate/lib/model.types").FinalEventCreators<{
         'api.refresh': () => {};
         'api.nextPage': () => {};
         'api.prevPage': () => {};
-        'api.query': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+        'api.query': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
         'api.setResponse': (payload: ApiSuccessResponse<RawDataType>) => ApiSuccessResponse<RawDataType>;
         'api.setError': (payload: ApiErrorResponse) => ApiErrorResponse;
         'api.ready': () => {};
-        'api.loading': (payload: PaginatedApiRequest<QueryType>) => PaginatedApiRequest<QueryType>;
+        'api.loading': (payload: PaginatedApiRequest<OrderBy, Search>) => PaginatedApiRequest<OrderBy, Search>;
         'api.success': (payload: ApiSuccessResponse<DataType>) => ApiSuccessResponse<DataType>;
         'api.error': (payload: {
             error: string;
@@ -117,9 +123,9 @@ declare class Wrapper<RawDataType, QueryType, DataType> {
         };
     }>>>>;
 }
-export declare type PaginatedApiActorType<RawDataType, QueryType, DataType> = ActorRefFrom<ReturnType<Wrapper<RawDataType, QueryType, DataType>['wrapped']>>;
-export declare type usePaginationReturnValue<QueryType, DataType> = {
-    request: PaginatedApiRequest<QueryType>;
+export declare type PaginatedApiActorType<RawDataType, OrderBy, Search, DataType> = ActorRefFrom<ReturnType<Wrapper<RawDataType, OrderBy, Search, DataType>['wrapped']>>;
+export declare type usePaginationReturnValue<OrderBy, Search, DataType> = {
+    request: PaginatedApiRequest<OrderBy, Search>;
     response?: PaginatedApiResponse<DataType>;
     loading: boolean;
     queryEmpty: boolean;
@@ -129,7 +135,7 @@ export declare type usePaginationReturnValue<QueryType, DataType> = {
     error: boolean;
     firstRequest: boolean;
 };
-export declare const usePagination: <RawDataType, QueryType, DataType>(actor: import("xstate").ActorRefWithDeprecatedState<PaginatedMachineContext<RawDataType, QueryType, DataType>, {
+export declare const usePagination: <RawDataType, OrderBy, Search, DataType>(actor: import("xstate").ActorRefWithDeprecatedState<PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>, {
     type: "api.refresh";
 } | {
     type: "api.nextPage";
@@ -147,7 +153,8 @@ export declare const usePagination: <RawDataType, QueryType, DataType>(actor: im
 } | {
     page: number;
     size: number;
-    query?: QueryType | undefined;
+    orderBy?: OrderBy | undefined;
+    search?: Search | undefined;
     type: "api.query";
 } | {
     items: RawDataType[];
@@ -158,7 +165,8 @@ export declare const usePagination: <RawDataType, QueryType, DataType>(actor: im
 } | {
     page: number;
     size: number;
-    query?: QueryType | undefined;
+    orderBy?: OrderBy | undefined;
+    search?: Search | undefined;
     type: "api.loading";
 } | {
     items: DataType[];
@@ -168,6 +176,6 @@ export declare const usePagination: <RawDataType, QueryType, DataType>(actor: im
     type: "api.success";
 }, {
     value: any;
-    context: PaginatedMachineContext<RawDataType, QueryType, DataType>;
-}>) => usePaginationReturnValue<QueryType, DataType>;
+    context: PaginatedMachineContext<RawDataType, OrderBy, Search, DataType>;
+}>) => usePaginationReturnValue<OrderBy, Search, DataType>;
 export {};
