@@ -1,5 +1,6 @@
 import { ApiCallback } from '@app/machines/PaginatedResponse.machine';
 import { Sender } from 'xstate';
+import { KafkaInstance } from '@rhoas/app-services-ui-shared';
 import { Connector, ConnectorNamespace, ConnectorType, ServiceAccount } from '@rhoas/connector-management-sdk';
 import { KafkaRequest } from '@rhoas/kafka-management-sdk';
 import { PlaceholderOrderBy } from './../app/machines/PaginatedResponse.machine';
@@ -74,6 +75,9 @@ declare type KafkaManagementApiProps = {
     accessToken: () => Promise<string>;
     kafkaManagementBasePath: string;
 };
+declare type KafkaInstanceDetailProps = {
+    KafkaInstanceId: string;
+} & KafkaManagementApiProps;
 export declare type KafkasSearch = {
     name?: string;
     owner?: string;
@@ -82,6 +86,7 @@ export declare type KafkasSearch = {
     regions?: string[];
 };
 export declare const fetchKafkaInstances: ({ accessToken, kafkaManagementBasePath, }: KafkaManagementApiProps) => ApiCallback<KafkaRequest, PlaceholderOrderBy, KafkasSearch>;
+export declare const getKafkaInstanceById: ({ accessToken, kafkaManagementBasePath, KafkaInstanceId, }: KafkaInstanceDetailProps) => FetchCallbacks<KafkaInstance>;
 export declare type UserProvidedServiceAccount = {
     clientId: string;
     clientSecret: string;

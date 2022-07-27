@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
+import { KafkaInstance } from '@rhoas/app-services-ui-shared';
 import './ConnectorInfoTextList.css';
 declare type AlertType = 'info' | 'warning' | 'danger' | undefined;
 export declare type ConnectorInfoTextListProps = {
@@ -6,9 +7,9 @@ export declare type ConnectorInfoTextListProps = {
     id: string;
     type?: string;
     bootstrapServer: string;
-    kafkaId: string;
+    kafkaId: string | KafkaInstance | ReactNode;
     owner: string;
-    namespaceId: string;
+    namespaceId: string | ReactNode;
     namespaceMsg?: string | undefined;
     namespaceMsgVariant: AlertType;
     createdAt: Date;
